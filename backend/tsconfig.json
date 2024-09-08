@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"target": "es2016",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"baseUrl": ".",
+		"paths": {
+			"@AppTypes": ["src/app-types/index.d.ts"],
+			"@Controllers": ["src/controllers/index.ts"],
+			"@Middlewares": ["src/middlewares/index.ts"],
+			"@Models": ["src/models/index.ts"],
+			"@Routers": ["src/routers/index.ts"],
+			"@Shopify": ["src/shopify/index.ts"],
+			"@Utils": ["src/utils/index.ts"]
+		}
+	},
+	"include": ["src/**/*.ts", "src/app-types/**/*.d.ts"],
+	"exclude": ["node_modules"]
+}
