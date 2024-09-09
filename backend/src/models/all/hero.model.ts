@@ -13,10 +13,21 @@ const getSingleHero = async (heroId: string) =>
 		where: { id: Number(heroId) },
 	});
 
-const getError = async () => {
-	throw { status: 404, message: "Something wrong happened" };
-};
+const updateHero = async (heroId: string, data: ISuperhero) =>
+	await PrismaInstance.superheros.update({
+		where: { id: Number(heroId) },
+		data,
+	});
 
-const HeroModel = { getAllHeros, getSingleHero, getError, createHero };
+const deleteHero = async (heroId: string) =>
+	await PrismaInstance.superheros.delete({ where: { id: Number(heroId) } });
+
+const HeroModel = {
+	createHero,
+	getAllHeros,
+	getSingleHero,
+	updateHero,
+	deleteHero,
+};
 
 export default HeroModel;

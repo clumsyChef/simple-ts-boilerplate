@@ -13,6 +13,14 @@ HeroRouter.get(
 	asyncErrorHandler(HeroController.getSingleHero)
 );
 
-HeroRouter.get("/error", asyncErrorHandler(HeroController.getError));
+HeroRouter.put(
+	"/update-hero/:heroId",
+	asyncErrorHandler(HeroController.updateHero)
+);
+
+HeroRouter.delete(
+	"/delete-hero/:heroId",
+	asyncErrorHandler(HeroController.deleteHero)
+);
 
 export default HeroRouter;

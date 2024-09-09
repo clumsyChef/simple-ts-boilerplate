@@ -27,15 +27,25 @@ const getSingleHero = async (
 	return res.status(200).json({ status: !!hero, data: hero ?? [] });
 };
 
-const getError = async (_req: Request, res: Response, _next: NextFunction) => {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const error = await HeroModel.getError();
-	res.status(404).json({ status: false, error: "404 error" });
-	// if (error) {
-
-	// }
+const updateHero = async (req: Request, res: Response, _next: NextFunction) => {
+	const data = req.body as ISuperhero;
+	const heroId = req.params.heroId;
+	await HeroModel.updateHero(heroId, data);
+	return res.status(200).json({ status: true });
 };
 
-const HeroController = { createHero, getAllHeros, getSingleHero, getError };
+const deleteHero = async (req: Request, res: Response, _next: NextFunction) => {
+	const heroId = req.params.heroId;
+	await HeroModel.deleteHero(heroId);
+	return res.status(200).json({ status: true });
+};
+
+const HeroController = {
+	createHero,
+	getAllHeros,
+	getSingleHero,
+	updateHero,
+	deleteHero,
+};
 
 export default HeroController;
